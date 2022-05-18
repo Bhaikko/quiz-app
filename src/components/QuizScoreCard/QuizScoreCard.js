@@ -7,8 +7,6 @@ const QuizScoreCard = props => {
         questions
     } = props;
 
-    console.log(props);
-
     let scoreCardRows = answerDetails.map(answerDetail => {
         return (
             <tr 
@@ -23,9 +21,7 @@ const QuizScoreCard = props => {
                 }}
             >
                 <td >{answerDetail.index + 1}</td>
-                <td 
-                    className={classes.ScoreCardColumn}
-                >
+                <td className={classes.ScoreCardColumn}>
                     {
                      questions[answerDetail.index].operand1 + " " +
                      questions[answerDetail.index].operator + " " +

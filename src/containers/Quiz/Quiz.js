@@ -41,7 +41,7 @@ class Quiz extends Component {
 
     onAnswerSubmitHandler = (answerDetails) => {
         answerDetails.index = this.state.currentQuestionIndex;
-        // console.log(answerDetails);
+
         this.evaluatedAnswers.push(answerDetails);
 
         let newIndex = this.state.currentQuestionIndex + 1;
@@ -72,7 +72,6 @@ class Quiz extends Component {
                         questions={this.questions}
                     />
                 ) : (
-                        
                     <QuizQuestion
                         question={this.questions[this.state.currentQuestionIndex]}
                         onAnswerSubmit={this.onAnswerSubmitHandler}
