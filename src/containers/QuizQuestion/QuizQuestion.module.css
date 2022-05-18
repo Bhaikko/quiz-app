@@ -1,0 +1,12 @@
+.QuizQuestion {
+
+}
+
+.QuizQuestionContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.QuizQuestionOperand {
+    margin: 10px;
+}

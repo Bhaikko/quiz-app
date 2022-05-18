@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './App.module.css';
+
+import Quiz from './containers/Quiz/Quiz';
 
 function App() {
   return(
-    <div className={classes.App}>
-      Hello World
-    </div>
+    <Fragment>
+      <Quiz />
+    </Fragment>
   );
 }
 
