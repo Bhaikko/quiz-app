@@ -181,7 +181,7 @@ class QuizMenu extends Component {
                     Please select atleast one operator to continue.
                 </div>
                 <div className={classes.MenuFooterNote}>
-                    Note: For division, give answer till one decimal point.
+                    Note: For division, give answer till two decimal point.
                 </div>
             </div>    
         );
