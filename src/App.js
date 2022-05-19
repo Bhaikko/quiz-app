@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import classes from './App.module.css';
 
 import QuizMenu from './containers/QuizMenu/QuizMenu';
 
 function App() {
   return(
-    <Fragment>
+    <div className={classes.App}>
       <QuizMenu />
       {/* <QuizMenu /> */}
-    </Fragment>
+    </div >
   );
 }
 

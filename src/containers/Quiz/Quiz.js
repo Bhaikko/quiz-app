@@ -67,10 +67,6 @@ class Quiz extends Component {
         // console.log("Quiz Finished.");
     }
 
-    onTimeUpHandler = () => {
-        // Quiz Question should have a timer
-    }
-
     render() {
         return (
             <div className={classes.Quiz}>
@@ -83,7 +79,9 @@ class Quiz extends Component {
                     />
                 ) : (
                     <div>
-                        <div className={classes.QuizQuestionsCount}>{this.props.numberOfQuestions}</div>
+                        <div className={classes.QuizQuestionsCount}>
+                            Question Number {this.state.currentQuestionIndex + 1} / {this.props.numberOfQuestions}
+                        </div>
                         <QuizQuestion
                             question={this.questions[this.state.currentQuestionIndex]}
                             onAnswerSubmit={this.onAnswerSubmitHandler}
