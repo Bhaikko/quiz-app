@@ -5,7 +5,26 @@ const CimulativeScorecard = props => {
     let finalUserTotal = 0,
         finalTotal = 0;
 
-    console.log(props.quizData);
+    const { quizData } = props;
+
+    console.log(quizData);
+
+    // console.log(props.quizData);
+    let cimulativeScoreJSX = Object.entries(quizData).map((pair, index) => {
+        const key = pair[0];
+
+        finalUserTotal += quizData[key].numberOfCorrectAnswers;
+        finalTotal += quizData[key].totalQuestions;
+
+        return (
+            <tr key={key}>
+                <td>{index + 1}</td>
+                <td>{quizData[key].numberOfCorrectAnswers}</td>
+                <td>{quizData[key].totalQuestions}</td>
+            </tr>
+        );
+    });
+
     return (
         <div className={classes.CimulativeScorecard}>
             <table className={classes.CimulativeScorecardTable}>
@@ -18,12 +37,7 @@ const CimulativeScorecard = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                        <td>d</td>
-                    </tr>
+                    {cimulativeScoreJSX}
                 </tbody>
             </table>
 
