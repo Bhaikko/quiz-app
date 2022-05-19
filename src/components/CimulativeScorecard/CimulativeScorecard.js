@@ -1,3 +1,5 @@
+// Displays cumulative score in the end when both the quizzes are over
+
 import React from 'react';
 import Button from '../Button/Button';
 import classes from './CimulativeScorecard.module.css';

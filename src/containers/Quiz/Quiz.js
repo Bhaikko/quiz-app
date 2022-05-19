@@ -1,3 +1,6 @@
+// Statefull component responsible for Quiz state
+// state contains current questions related to quiz and answers to each question
+
 import React, { Component } from 'react';
 import classes from './Quiz.module.css';
 
@@ -11,12 +14,12 @@ class Quiz extends Component {
     constructor(props) {
         super(props);
 
-        this.questions = [];
-        this.evaluatedAnswers = [];
+        this.questions = [];            // List of questions generated in the quiz
+        this.evaluatedAnswers = [];     // Evaluated answers of users along with actual answers
 
         this.state = {
-            currentQuestionIndex: 0,
-            displayScoreCard: false
+            currentQuestionIndex: 0,    // Current Question index in quiz
+            displayScoreCard: false 
         }
         this.generateQuestions();
     

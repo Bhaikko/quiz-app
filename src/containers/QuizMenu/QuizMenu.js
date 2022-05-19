@@ -1,3 +1,5 @@
+// Responible for maintaining Quiz Attribute state 
+
 import React, { Component, Fragment } from 'react';
 import Button from '../../components/Button/Button';
 import Quiz from '../Quiz/Quiz';
@@ -8,15 +10,15 @@ class QuizMenu extends Component {
         super(props);
 
         this.state = {
-            numberOfQuestions: 1,
-            operators: {
+            numberOfQuestions: 1,       // Number of questions the quiz should have
+            operators: {                // Operands allowed in the quiz
                 "+": false,
                 "-": false,
                 "*": false,
                 "/": false
             },
-            maxOperand: 20,
-            quizStarted: false
+            maxOperand: 20,             // Max operand value that can be there in a question. Range will be from 1 to maxOperand
+            quizStarted: false          
         }
     }
 
@@ -72,6 +74,8 @@ class QuizMenu extends Component {
 
     render() {
         if (this.state.quizStarted) {
+            // Converting Quiz operator object into array 
+            // This allows to pick random operator by index
             const operators = [];
             for (const [key, value] of Object.entries(this.state.operators)) {
                 if (value === true) {

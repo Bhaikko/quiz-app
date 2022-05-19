@@ -1,3 +1,5 @@
+// Stateless Component used as Button in the application
+
 import React from 'react';
 import classes from './Button.module.css';
 

@@ -1,3 +1,5 @@
+// Statefull component responsible for Timer used in Question
+
 import React, { Component } from 'react';
 import classes from './Timer.module.css';
 

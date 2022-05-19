@@ -1,3 +1,5 @@
+// Stateless component responsible for showing indiviual quiz scores
+
 import React, { useEffect } from 'react';
 import classes from './QuizScoreCard.module.css';
 

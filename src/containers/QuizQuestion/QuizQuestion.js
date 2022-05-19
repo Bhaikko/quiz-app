@@ -1,3 +1,5 @@
+// Statefull component responsible for maintaining each question state and user answer 
+
 import React, { Component } from 'react';
 import classes from './QuizQuestion.module.css'
 
