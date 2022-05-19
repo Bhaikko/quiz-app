@@ -47,7 +47,6 @@ class QuizQuestion extends Component {
             submittedAnswer: Number(this.state.answerInput)
         });
         
-        // console.log(this.state.answerInput);
         this.setState({
             answerInput: "",
             resetTimer: true
@@ -84,7 +83,7 @@ class QuizQuestion extends Component {
                     <div className={classes.QuizQuestionOperand}>{this.props.question.operand2}</div>
                 </div>
 
-                <form onSubmit={() => {}} className={classes.QuizQuestionForm}>
+                <form onSubmit={(event) => {event.preventDefault()}} className={classes.QuizQuestionForm}>
                     <label><b>Your Answer: </b></label>
                     <input 
                         onChange={this.onChangeAnswerInputHandler}

@@ -55,8 +55,6 @@ class QuizMenu extends Component {
 
         this.setState({
             operators: currentOperatorsState
-        }, () => {
-            // console.log(this.state.operators);
         });
 
     }
@@ -118,7 +116,7 @@ class QuizMenu extends Component {
                     {this.props.name}
                 </div>
 
-                <form onSubmit={() => {}} className={classes.QuizMenuForm}>
+                <form onSubmit={(event) => {event.preventDefault()}} className={classes.QuizMenuForm}>
                     <div className={classes.QuizMenuInputBlock}>
                         <label 
                             className={classes.QuizMenuInputBlockLabel}
