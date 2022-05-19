@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import classes from './App.module.css';
 
-import Quiz from './containers/Quiz/Quiz';
+import QuizMenu from './containers/QuizMenu/QuizMenu';
 
 function App() {
   return(
     <Fragment>
-      <Quiz />
+      <QuizMenu />
+      {/* <QuizMenu /> */}
     </Fragment>
   );
 }

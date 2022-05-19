@@ -24,7 +24,7 @@ class QuizQuestion extends Component {
             case "*":
                 return Number(this.props.question.operand1) * Number(this.props.question.operand2);
             case "/":
-                return (Number(this.props.question.operand1) / Number(this.props.question.operand2)).toPrecision(2);
+                return (Number(this.props.question.operand1) / Number(this.props.question.operand2)).toPrecision(1);
             default:
                 return null;
         }

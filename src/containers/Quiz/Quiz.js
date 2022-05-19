@@ -4,39 +4,45 @@ import classes from './Quiz.module.css';
 import QuizQuestion from '../QuizQuestion/QuizQuestion';
 import QuizScoreCard from '../../components/QuizScoreCard/QuizScoreCard';
 
+import Random, { randomInteger } from './../../utility/Random';
+
 class Quiz extends Component {
     constructor(props) {
         super(props);
+
+        this.questions = [
+            // {
+                //     operand1: 2,
+                //     operand2: 3,
+                //     operator: "+"
+            // }
+        ];
+
+        this.evaluatedAnswers = [];
+        
+        this.generateQuestions();
 
         this.state = {
             currentQuestionIndex: 0,
             displayScoreCard: false
         }
+    }
 
-        this.questions = [
-            {
-                operand1: 2,
-                operand2: 3,
-                operator: "+"
-            },
-            {
-                operand1: 6,
-                operand2: 3,
-                operator: "-"
-            },
-            // {
-            //     operand1: 2,
-            //     operand2: 3,
-            //     operator: "*"
-            // },
-            // {
-            //     operand1: 2,
-            //     operand2: 3,
-            //     operator: "/"
-            // },
-        ];
+    generateQuestions = () => {
+        const {
+            numberOfQuestions,
+            operators,
+            maxOperand
+        } = this.props;
 
-        this.evaluatedAnswers = [];
+        for (let i = 0; i < numberOfQuestions; i++) {
+            this.questions.push({
+                operand1: randomInteger(1, maxOperand),
+                operand2: randomInteger(1, maxOperand),
+                operator: operators[randomInteger(0, operators.length - 1)]
+            });
+        }
+
     }
 
     onAnswerSubmitHandler = (answerDetails) => {
@@ -76,10 +82,13 @@ class Quiz extends Component {
                         questions={this.questions}
                     />
                 ) : (
-                    <QuizQuestion
-                        question={this.questions[this.state.currentQuestionIndex]}
-                        onAnswerSubmit={this.onAnswerSubmitHandler}
-                    />
+                    <div>
+                        <div className={classes.QuizQuestionsCount}>{this.props.numberOfQuestions}</div>
+                        <QuizQuestion
+                            question={this.questions[this.state.currentQuestionIndex]}
+                            onAnswerSubmit={this.onAnswerSubmitHandler}
+                        />
+                    </div>
                 )}
             </div>
         );

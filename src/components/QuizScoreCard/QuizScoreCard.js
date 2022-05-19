@@ -34,11 +34,11 @@ const QuizScoreCard = props => {
                 </td>
                 
                 <td className={classes.ScoreCardColumn}>
-                    {answerDetail.actualAnswer}
+                    {answerDetail.submittedAnswer}
                 </td>
 
                 <td className={classes.ScoreCardColumn}>
-                    {answerDetail.submittedAnswer}
+                    {answerDetail.actualAnswer}
                 </td>
             </tr>
         );
