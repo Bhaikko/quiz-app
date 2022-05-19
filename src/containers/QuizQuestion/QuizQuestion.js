@@ -7,7 +7,7 @@ class QuizQuestion extends Component {
     constructor(props) {
         super(props);
 
-        this.timeAllowedPerQuestion = 5;
+        this.timeAllowedPerQuestion = 20;
 
         this.state = {
             answerInput: "",

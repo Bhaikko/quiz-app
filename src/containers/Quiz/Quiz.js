@@ -12,31 +12,37 @@ class Quiz extends Component {
 
         this.questions = [];
         this.evaluatedAnswers = [];
+
+        this.state = {
+            currentQuestionIndex: 0,
+            displayScoreCard: false
+        }
+        this.generateQuestions();
         
 
-        this.quizDataFromPrevSession = sessionStorage.getItem(this.props.name);
+        // this.quizDataFromPrevSession = sessionStorage.getItem(this.props.name);
 
-        if (this.quizDataFromPrevSession !== null) {
-            const {
-                questions,
-                currentQuestionIndex,
-                evaluatedAnswers,
-                displayScoreCard
-            } = JSON.parse(this.quizDataFromPrevSession);
+        // if (this.quizDataFromPrevSession !== null) {
+        //     const {
+        //         questions,
+        //         currentQuestionIndex,
+        //         evaluatedAnswers,
+        //         displayScoreCard
+        //     } = JSON.parse(this.quizDataFromPrevSession);
 
-            this.evaluatedAnswers = evaluatedAnswers;
-            this.questions = questions;
-            this.state = {
-                currentQuestionIndex: currentQuestionIndex,
-                displayScoreCard: displayScoreCard
-            }
-        } else {
-            this.state = {
-                currentQuestionIndex: 0,
-                displayScoreCard: false
-            }
-            this.generateQuestions();
-        }
+        //     this.evaluatedAnswers = evaluatedAnswers;
+        //     this.questions = questions;
+        //     this.state = {
+        //         currentQuestionIndex: currentQuestionIndex,
+        //         displayScoreCard: displayScoreCard
+        //     }
+        // } else {
+        //     this.state = {
+        //         currentQuestionIndex: 0,
+        //         displayScoreCard: false
+        //     }
+        //     this.generateQuestions();
+        // }
     }
 
     componentDidMount() {

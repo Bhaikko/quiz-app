@@ -2,8 +2,9 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
 }
 
 .QuizContainer {
@@ -11,4 +12,53 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.QuizMenuForm {
+    width: 70%;
+}
+
+.QuizHeader { 
+    text-decoration: underline;
+    font-size: 48px;
+    color: black;
+    margin: 15%;
+}
+
+.QuizMenuInputBlock {
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.QuizMenuInputBlockLabel {
+    font-size:  20px;
+}
+
+.QuizMenuInputBlockInput {
+    height: 32px;
+    font-size: 16px; 
+    padding: 10px;  
+    margin: 5px;
+}
+
+.QuizMenuSelectBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.QuizMenuStartButton {
+    width: 25%;
+    padding: 10px;
+    /* border: 0; */
+    border-radius: 20px;;
+}
+
+.MenuFooterNote {
+    margin: 10px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: lighter;
 }

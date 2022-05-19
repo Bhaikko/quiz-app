@@ -44,11 +44,13 @@ class App extends Component {
         <QuizMenu 
           name={"Quiz 1"}
           onQuizFinished={this.onQuizFinishHandler}
-        />
+          bgColor={"#F5E5D6"}
+          />
         
         <QuizMenu 
           name={"Quiz 2"}
           onQuizFinished={this.onQuizFinishHandler}
+          bgColor={"#B9A8EB"}
         />
   
       </div>

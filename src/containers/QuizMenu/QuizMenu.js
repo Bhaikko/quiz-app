@@ -6,7 +6,7 @@ class QuizMenu extends Component {
     constructor(props) {
         super(props);
 
-        this.wasQuizStarted = sessionStorage.getItem(this.props.name) ? true : false;
+        // this.wasQuizStarted = sessionStorage.getItem(this.props.name) ? true : false;
 
         this.state = {
             numberOfQuestions: 1,
@@ -17,7 +17,7 @@ class QuizMenu extends Component {
                 "/": false
             },
             maxOperand: 20,
-            quizStarted: this.wasQuizStarted
+            quizStarted: false
         }
     }
 
@@ -84,8 +84,6 @@ class QuizMenu extends Component {
                 }
             }
 
-            console.log(this.state.quizStarted);
-
             return (
                 <div className={classes.QuizContainer}>
                     <Quiz 
@@ -107,52 +105,79 @@ class QuizMenu extends Component {
         }
 
         return (
-            <div className={classes.QuizMenu}>
-                <div className={classes.QuizHeader}>{this.props.name}</div>
-                <div className={classes.QuizMenuInputBlock}>
-                    <label>Number of Questions</label>
-                    <input 
-                        name="numberOfQuestions"
-                        value={this.state.numberOfQuestions}
-                        onChange={this.onQuizAttributtesUpdate}
-                        type="number"
-                    />
+            <div 
+                className={classes.QuizMenu} 
+                style={{backgroundColor: this.props.bgColor}}
+            >
+                <div className={classes.QuizHeader}>
+                    {this.props.name}
                 </div>
 
-                <div className={classes.QuizMenuInputBlock}>
-                    <label>Max Operand</label>
-                    <input 
-                        name="maxOperand"
-                        value={this.state.maxOperand}
-                        onChange={this.onQuizAttributtesUpdate}
-                        type="number"
-                    />
-                </div>
+                <form onSubmit={() => {}} className={classes.QuizMenuForm}>
+                    <div className={classes.QuizMenuInputBlock}>
+                        <label 
+                            className={classes.QuizMenuInputBlockLabel}
+                        >
+                            Number of Questions:
+                        </label>
 
-                <div className={classes.QuizMenuInputBlock}>
-                    {Object.entries(this.state.operators).map(operator => {
-                        return (
-                            <div key={operator[0]}>
-                                <label>{operator[0]}: </label>
-                                <input 
-                                    type="checkbox"
-                                    name={operator[0]}
-                                    value={operator[1]}
-                                    onChange={this.onOperatorChangeHandler}
-                                    defaultChecked={operator[1]}
-                                />
-                            </div>
-                        )
-                    })}
-                    
-                </div>
+                        <input 
+                            name="numberOfQuestions"
+                            value={this.state.numberOfQuestions}
+                            onChange={this.onQuizAttributtesUpdate}
+                            type="number"
+                            className={classes.QuizMenuInputBlockInput}
+                        />
+                    </div>
 
-                <button 
-                    onClick={this.onQuizStart}
-                    disabled={!this.checkValidConfigOfQuiz()}
-                >
-                    Start Quiz
-                </button>
+                    <div className={classes.QuizMenuInputBlock}>
+                        <label 
+                            className={classes.QuizMenuInputBlockLabel}
+                        >
+                            Max Operand Value:
+                        </label>
+
+                        <input 
+                            name="maxOperand"
+                            value={this.state.maxOperand}
+                            onChange={this.onQuizAttributtesUpdate}
+                            type="number"
+                            className={classes.QuizMenuInputBlockInput}
+                        />
+                    </div>
+
+                    <div className={classes.QuizMenuInputBlock}>
+                        <label className={classes.QuizMenuInputBlockLabel}>Operators: </label>
+                        {Object.entries(this.state.operators).map(operator => {
+                            return (
+                                <div key={operator[0]} className={classes.QuizMenuSelectBlock}>
+                                    <label>{operator[0]}: </label>
+                                    <input 
+                                        type="checkbox"
+                                        name={operator[0]}
+                                        value={operator[1]}
+                                        onChange={this.onOperatorChangeHandler}
+                                        defaultChecked={operator[1]}
+                                        className={classes.QuizMenuInputBlockInput}
+                                    />
+                                </div>
+                            )
+                        })}
+                        
+                    </div>
+
+                    <button 
+                        onClick={this.onQuizStart}
+                        disabled={!this.checkValidConfigOfQuiz()}
+                        className={classes.QuizMenuStartButton}
+                    >
+                        Start Quiz
+                    </button>
+                </form>
+
+                <div className={classes.MenuFooterNote}>
+                    Note: For division, give answer till one decimal point.
+                </div>
             </div>    
         );
     }
