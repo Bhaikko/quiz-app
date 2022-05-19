@@ -10,11 +10,11 @@ Quiz app allows to run 2 quizzes simultaneously on one window and indiviual and 
 
 ## Getting Started
 ### npm along with nodejs must be installed.
-Before you start anything, make sure to install packages using *npm install* in *frontend* and *api* folder.
+Before you start anything, make sure to install packages using *npm install* in *quiz-app*.
 
 For the development server of reactjs,
 ```
-  cd mait-project/frontend
+  cd quiz-app
   npm start
 ```
 This runs the frontend development server.
