@@ -86,6 +86,7 @@ class QuizMenu extends Component {
                     operators={operators}
                     maxOperand={this.state.maxOperand}
                     onQuizReset={this.onQuizResetHander}
+                    onQuizFinished={this.props.onQuizFinished}
                 />
             );
         }

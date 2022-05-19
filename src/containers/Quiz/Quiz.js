@@ -55,6 +55,8 @@ class Quiz extends Component {
             // this.onQuizFinishHandler();
             this.setState({
                 displayScoreCard: true
+            }, () => {
+                this.onQuizFinishHandler();
             })
         } else {
             this.setState({
@@ -64,7 +66,7 @@ class Quiz extends Component {
     }
 
     onQuizFinishHandler = () => {
-        // console.log("Quiz Finished.");
+        this.props.onQuizFinished();
     }
 
     render() {
