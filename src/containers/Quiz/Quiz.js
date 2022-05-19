@@ -108,7 +108,6 @@ class Quiz extends Component {
     render() {
         return (
             <div className={classes.Quiz}>
-
                 {this.state.displayScoreCard ? (
                     <QuizScoreCard
                         onEvaluationFinish={this.onQuizFinishHandler}
@@ -118,7 +117,7 @@ class Quiz extends Component {
                 ) : (
                     <div>
                         <div className={classes.QuizQuestionsCount}>
-                            Question Number {this.state.currentQuestionIndex + 1} / {this.questions.length}
+                            <b>Question Number: </b> {this.state.currentQuestionIndex + 1} / {this.questions.length}
                         </div>
                         <QuizQuestion
                             question={this.questions[this.state.currentQuestionIndex]}

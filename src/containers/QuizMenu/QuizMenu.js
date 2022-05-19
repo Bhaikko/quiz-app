@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Button from '../../components/Button/Button';
 import Quiz from '../Quiz/Quiz';
 import classes from './QuizMenu.module.css';
 
@@ -85,7 +86,16 @@ class QuizMenu extends Component {
             }
 
             return (
-                <div className={classes.QuizContainer}>
+                <div 
+                    className={classes.QuizContainer}
+                    style={{
+                        backgroundColor: this.props.bgColor
+                    }}
+                >
+                    <div className={classes.QuizHeader}>
+                        {this.props.name}
+                    </div>
+
                     <Quiz 
                         name={this.props.name}
                         numberOfQuestions={this.state.numberOfQuestions}
@@ -95,18 +105,18 @@ class QuizMenu extends Component {
                         quizStarted={this.state.quizStarted}
                     />
 
-                    <button 
+                    <Button 
                         onClick={this.onQuizResetHander}
                     >
                         Reset Quiz
-                    </button>
+                    </Button>
                 </div>
             );
         }
 
         return (
             <div 
-                className={classes.QuizMenu} 
+                className={classes.QuizContainer} 
                 style={{backgroundColor: this.props.bgColor}}
             >
                 <div className={classes.QuizHeader}>
@@ -166,15 +176,17 @@ class QuizMenu extends Component {
                         
                     </div>
 
-                    <button 
+                    <Button 
                         onClick={this.onQuizStart}
                         disabled={!this.checkValidConfigOfQuiz()}
-                        className={classes.QuizMenuStartButton}
                     >
                         Start Quiz
-                    </button>
+                    </Button>
                 </form>
 
+                <div className={classes.MenuFooterNote}>
+                    Please select atleast one operator to continue.
+                </div>
                 <div className={classes.MenuFooterNote}>
                     Note: For division, give answer till one decimal point.
                 </div>
