@@ -40,9 +40,6 @@ class QuizMenu extends Component {
             ...this.state.operators
         };
 
-        console.log(event.target.name);
-        console.log(event.target.checked);
-
         currentOperatorsState[event.target.name] = event.target.checked;
 
         this.setState({
@@ -51,6 +48,21 @@ class QuizMenu extends Component {
             // console.log(this.state.operators);
         });
 
+    }
+
+    checkValidConfigOfQuiz = () => {
+
+        if (this.state.numberOfQuestions <= 0 || this.state.maxOperand <= 0) {
+            return false;
+        }
+
+        for (const [key, value] of Object.entries(this.state.operators)) {
+            if (value === true) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     render() {
@@ -111,7 +123,10 @@ class QuizMenu extends Component {
                     
                 </div>
 
-                <button onClick={this.onQuizStart}>
+                <button 
+                    onClick={this.onQuizStart}
+                    disabled={!this.checkValidConfigOfQuiz()}
+                >
                     Start Quiz
                 </button>
             </div>    
