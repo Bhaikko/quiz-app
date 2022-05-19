@@ -1,5 +1,9 @@
 .QuizQuestion {
-
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .QuizQuestionContainer {
@@ -9,4 +13,20 @@
 
 .QuizQuestionOperand {
     margin: 10px;
+}
+
+.QuizQuestionForm {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.QuizQuestionInput {
+    height: 32px;
+    font-size: 16px; 
+    padding: 10px;  
+    margin: 5px;
 }

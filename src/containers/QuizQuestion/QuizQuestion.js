@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './QuizQuestion.module.css'
 
 import Timer from '../Timer/Timer';
+import Button from '../../components/Button/Button';
 
 class QuizQuestion extends Component {
     constructor(props) {
@@ -77,23 +78,29 @@ class QuizQuestion extends Component {
         return (
             <div className={classes.QuizQuestion}>
                 <div className={classes.QuizQuestionContainer}>
+                    <div className={classes.QuizQuestionOperand}><b>Question: </b></div>
                     <div className={classes.QuizQuestionOperand}>{this.props.question.operand1}</div>
                     <div className={classes.QuizQuestionOperand}>{this.props.question.operator}</div>
                     <div className={classes.QuizQuestionOperand}>{this.props.question.operand2}</div>
                 </div>
 
-                <input 
-                    onChange={this.onChangeAnswerInputHandler}
-                    value={this.state.answerInput}
-                    name="answerInput"
-                    type="number"
-                />
+                <form onSubmit={() => {}} className={classes.QuizQuestionForm}>
+                    <label><b>Your Answer: </b></label>
+                    <input 
+                        onChange={this.onChangeAnswerInputHandler}
+                        value={this.state.answerInput}
+                        name="answerInput"
+                        type="number"
+                        placeholder='Answer'
+                        className={classes.QuizQuestionInput}
+                    />
 
-                <button 
-                    onClick={this.onAnswerSubmitHandler}
-                >
-                    Submit Answer!
-                </button>
+                    <Button 
+                        onClick={this.onAnswerSubmitHandler}
+                    >
+                        Submit Answer!
+                    </Button>
+                </form>
 
                 <Timer 
                     timerValue={this.timeAllowedPerQuestion}

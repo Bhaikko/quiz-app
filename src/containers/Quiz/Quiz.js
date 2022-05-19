@@ -115,7 +115,7 @@ class Quiz extends Component {
                         questions={this.questions}
                     />
                 ) : (
-                    <div>
+                    <div className={classes.Quiz}>
                         <div className={classes.QuizQuestionsCount}>
                             <b>Question Number: </b> {this.state.currentQuestionIndex + 1} / {this.questions.length}
                         </div>
@@ -123,7 +123,6 @@ class Quiz extends Component {
                             question={this.questions[this.state.currentQuestionIndex]}
                             onAnswerSubmit={this.onAnswerSubmitHandler}
                         />
-
                     </div>
                 )}
             </div>
