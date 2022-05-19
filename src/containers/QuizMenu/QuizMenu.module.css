@@ -5,3 +5,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.QuizContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

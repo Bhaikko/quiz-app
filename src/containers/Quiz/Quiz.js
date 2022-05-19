@@ -10,21 +10,51 @@ class Quiz extends Component {
     constructor(props) {
         super(props);
 
-        this.questions = [
-            // {
-                //     operand1: 2,
-                //     operand2: 3,
-                //     operator: "+"
-            // }
-        ];
-
+        this.questions = [];
         this.evaluatedAnswers = [];
         
-        this.generateQuestions();
 
-        this.state = {
-            currentQuestionIndex: 0,
-            displayScoreCard: false
+        this.quizDataFromPrevSession = sessionStorage.getItem(this.props.name);
+
+        if (this.quizDataFromPrevSession !== null) {
+            const {
+                questions,
+                currentQuestionIndex,
+                evaluatedAnswers,
+                displayScoreCard
+            } = JSON.parse(this.quizDataFromPrevSession);
+
+            this.evaluatedAnswers = evaluatedAnswers;
+            this.questions = questions;
+            this.state = {
+                currentQuestionIndex: currentQuestionIndex,
+                displayScoreCard: displayScoreCard
+            }
+        } else {
+            this.state = {
+                currentQuestionIndex: 0,
+                displayScoreCard: false
+            }
+            this.generateQuestions();
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener('beforeunload', this.handleUnload);
+    }
+
+    handleUnload = () => {
+        console.log(this.props.quizStarted);
+        if (
+            this.state.displayScoreCard === false && 
+            this.props.quizStarted === true
+        ) {
+            // sessionStorage.setItem(this.props.name, JSON.stringify({
+            //     questions: this.questions,
+            //     currentQuestionIndex: this.state.currentQuestionIndex,
+            //     evaluatedAnswers: this.evaluatedAnswers,
+            //     displayScoreCard: this.state.displayScoreCard
+            // }));
         }
     }
 
@@ -52,7 +82,6 @@ class Quiz extends Component {
 
         let newIndex = this.state.currentQuestionIndex + 1;
         if (newIndex >= this.questions.length) {
-            // this.onQuizFinishHandler();
             this.setState({
                 displayScoreCard: true
             })
@@ -67,6 +96,7 @@ class Quiz extends Component {
         quizData.name = this.props.name;
 
         this.props.onQuizFinished(quizData);
+
     }
 
     render() {
@@ -82,16 +112,13 @@ class Quiz extends Component {
                 ) : (
                     <div>
                         <div className={classes.QuizQuestionsCount}>
-                            Question Number {this.state.currentQuestionIndex + 1} / {this.props.numberOfQuestions}
+                            Question Number {this.state.currentQuestionIndex + 1} / {this.questions.length}
                         </div>
                         <QuizQuestion
                             question={this.questions[this.state.currentQuestionIndex]}
                             onAnswerSubmit={this.onAnswerSubmitHandler}
                         />
 
-                        <button onClick={this.props.onQuizReset}> 
-                            Reset Quiz
-                        </button>
                     </div>
                 )}
             </div>

@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Quiz from '../Quiz/Quiz';
 import classes from './QuizMenu.module.css';
 
 class QuizMenu extends Component {
     constructor(props) {
         super(props);
+
+        this.wasQuizStarted = sessionStorage.getItem(this.props.name) ? true : false;
 
         this.state = {
             numberOfQuestions: 1,
@@ -15,7 +17,7 @@ class QuizMenu extends Component {
                 "/": false
             },
             maxOperand: 20,
-            quizStarted: false
+            quizStarted: this.wasQuizStarted
         }
     }
 
@@ -28,6 +30,8 @@ class QuizMenu extends Component {
     onQuizResetHander = () => {
         this.setState({
             quizStarted: false
+        }, () => {
+            sessionStorage.removeItem(this.props.name);
         })
     }
 
@@ -80,15 +84,25 @@ class QuizMenu extends Component {
                 }
             }
 
+            console.log(this.state.quizStarted);
+
             return (
-                <Quiz 
-                    name={this.props.name}
-                    numberOfQuestions={this.state.numberOfQuestions}
-                    operators={operators}
-                    maxOperand={this.state.maxOperand}
-                    onQuizReset={this.onQuizResetHander}
-                    onQuizFinished={data => this.props.onQuizFinished(data)}
-                />
+                <div className={classes.QuizContainer}>
+                    <Quiz 
+                        name={this.props.name}
+                        numberOfQuestions={this.state.numberOfQuestions}
+                        operators={operators}
+                        maxOperand={this.state.maxOperand}
+                        onQuizFinished={data => this.props.onQuizFinished(data)}
+                        quizStarted={this.state.quizStarted}
+                    />
+
+                    <button 
+                        onClick={this.onQuizResetHander}
+                    >
+                        Reset Quiz
+                    </button>
+                </div>
             );
         }
 
