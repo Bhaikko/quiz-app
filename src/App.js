@@ -26,8 +26,6 @@ class App extends Component {
     this.setState({
       finishedQuizesCount: this.state.finishedQuizesCount + 1,
       finishedQuizData: currentData
-    }, () => {
-      sessionStorage.clear();
     });
   }
 

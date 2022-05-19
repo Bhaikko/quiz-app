@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button/Button';
 import classes from './CimulativeScorecard.module.css';
 
 const CimulativeScorecard = props => {
@@ -43,6 +44,10 @@ const CimulativeScorecard = props => {
             <div className={classes.FinalScore}>
                 Your Final Score: {finalUserTotal} / {finalTotal}                
             </div>
+
+            <Button onClick={() => window.location.reload()}>
+                Reset Quiz
+            </Button>
         </div>
     )
 }

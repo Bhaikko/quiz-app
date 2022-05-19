@@ -13,7 +13,7 @@ const QuizScoreCard = props => {
         let rowBackgroundColor = "lightgreen";
         if (
             answerDetail.submittedAnswer === "Unanswered" ||
-            answerDetail.actualAnswer !== answerDetail.submittedAnswer
+            answerDetail.actualAnswer != answerDetail.submittedAnswer
         ) {
             rowBackgroundColor = "indianred";
             numberOfCorrectAnswers--;

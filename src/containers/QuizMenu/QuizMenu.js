@@ -7,8 +7,6 @@ class QuizMenu extends Component {
     constructor(props) {
         super(props);
 
-        // this.wasQuizStarted = sessionStorage.getItem(this.props.name) ? true : false;
-
         this.state = {
             numberOfQuestions: 1,
             operators: {
@@ -31,8 +29,6 @@ class QuizMenu extends Component {
     onQuizResetHander = () => {
         this.setState({
             quizStarted: false
-        }, () => {
-            sessionStorage.removeItem(this.props.name);
         })
     }
 
