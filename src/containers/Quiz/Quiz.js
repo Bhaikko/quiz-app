@@ -4,7 +4,7 @@ import classes from './Quiz.module.css';
 import QuizQuestion from '../QuizQuestion/QuizQuestion';
 import QuizScoreCard from '../../components/QuizScoreCard/QuizScoreCard';
 
-import Random, { randomInteger } from './../../utility/Random';
+import { randomInteger } from './../../utility/Random';
 
 class Quiz extends Component {
     constructor(props) {
@@ -72,7 +72,6 @@ class Quiz extends Component {
     render() {
         return (
             <div className={classes.Quiz}>
-                <div className={classes.QuizHeader}>{this.props.name}</div>
 
                 {this.state.displayScoreCard ? (
                     <QuizScoreCard

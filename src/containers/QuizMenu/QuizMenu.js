@@ -94,6 +94,7 @@ class QuizMenu extends Component {
 
         return (
             <div className={classes.QuizMenu}>
+                <div className={classes.QuizHeader}>{this.props.name}</div>
                 <div className={classes.QuizMenuInputBlock}>
                     <label>Number of Questions</label>
                     <input 

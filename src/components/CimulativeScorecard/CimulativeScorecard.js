@@ -7,9 +7,6 @@ const CimulativeScorecard = props => {
 
     const { quizData } = props;
 
-    console.log(quizData);
-
-    // console.log(props.quizData);
     let cimulativeScoreJSX = Object.entries(quizData).map((pair, index) => {
         const key = pair[0];
 
