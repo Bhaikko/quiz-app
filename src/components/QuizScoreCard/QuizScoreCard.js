@@ -7,6 +7,8 @@ const QuizScoreCard = props => {
         questions
     } = props;
 
+    let numberOfCorrectAnswers = props.answerDetails.length;
+
     let scoreCardRows = answerDetails.map(answerDetail => {
         let rowBackgroundColor = "lightgreen";
         if (
@@ -14,6 +16,7 @@ const QuizScoreCard = props => {
             answerDetail.actualAnswer !== answerDetail.submittedAnswer
         ) {
             rowBackgroundColor = "indianred";
+            numberOfCorrectAnswers--;
         }
 
         return (
@@ -45,19 +48,25 @@ const QuizScoreCard = props => {
     });
 
     return (
-        <table className={classes.ScoreCard}>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Question</th>
-                    <th>Your Answer</th>
-                    <th>Correct Answer</th>
-                </tr>
-            </thead>
-            <tbody>
-                {scoreCardRows}
-            </tbody>
-        </table>
+        <div className={classes.ScoreCardContainer}>
+            <table className={classes.ScoreCard}>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Question</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {scoreCardRows}
+                </tbody>
+            </table>
+
+            <div className={classes.FinalScore}>
+                Score: {numberOfCorrectAnswers} / {props.answerDetails.length}                
+            </div>
+        </div>
     );
 }
 

@@ -25,6 +25,12 @@ class QuizMenu extends Component {
         });
     }
 
+    onQuizResetHander = () => {
+        this.setState({
+            quizStarted: false
+        })
+    }
+
     onQuizAttributtesUpdate = event => {
         const newState = {
             ...this.state
@@ -79,6 +85,7 @@ class QuizMenu extends Component {
                     numberOfQuestions={this.state.numberOfQuestions}
                     operators={operators}
                     maxOperand={this.state.maxOperand}
+                    onQuizReset={this.onQuizResetHander}
                 />
             );
         }

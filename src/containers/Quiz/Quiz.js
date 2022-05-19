@@ -86,6 +86,10 @@ class Quiz extends Component {
                             question={this.questions[this.state.currentQuestionIndex]}
                             onAnswerSubmit={this.onAnswerSubmitHandler}
                         />
+
+                        <button onClick={this.props.onQuizReset}> 
+                            Reset Quiz
+                        </button>
                     </div>
                 )}
             </div>
