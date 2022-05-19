@@ -55,8 +55,6 @@ class Quiz extends Component {
             // this.onQuizFinishHandler();
             this.setState({
                 displayScoreCard: true
-            }, () => {
-                this.onQuizFinishHandler();
             })
         } else {
             this.setState({
@@ -65,17 +63,20 @@ class Quiz extends Component {
         }
     }
 
-    onQuizFinishHandler = () => {
-        this.props.onQuizFinished();
+    onQuizFinishHandler = (quizData) => {
+        quizData.name = this.props.name;
+
+        this.props.onQuizFinished(quizData);
     }
 
     render() {
         return (
             <div className={classes.Quiz}>
-                <div className={classes.QuizHeader}>Quiz 1</div>
+                <div className={classes.QuizHeader}>{this.props.name}</div>
 
                 {this.state.displayScoreCard ? (
                     <QuizScoreCard
+                        onEvaluationFinish={this.onQuizFinishHandler}
                         answerDetails={this.evaluatedAnswers}
                         questions={this.questions}
                     />

@@ -7,7 +7,7 @@ class QuizMenu extends Component {
         super(props);
 
         this.state = {
-            numberOfQuestions: 4,
+            numberOfQuestions: 1,
             operators: {
                 "+": false,
                 "-": false,
@@ -82,11 +82,12 @@ class QuizMenu extends Component {
 
             return (
                 <Quiz 
+                    name={this.props.name}
                     numberOfQuestions={this.state.numberOfQuestions}
                     operators={operators}
                     maxOperand={this.state.maxOperand}
                     onQuizReset={this.onQuizResetHander}
-                    onQuizFinished={this.props.onQuizFinished}
+                    onQuizFinished={data => this.props.onQuizFinished(data)}
                 />
             );
         }

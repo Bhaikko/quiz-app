@@ -5,6 +5,7 @@ const CimulativeScorecard = props => {
     let finalUserTotal = 0,
         finalTotal = 0;
 
+    console.log(props.quizData);
     return (
         <div className={classes.CimulativeScorecard}>
             <table className={classes.CimulativeScorecardTable}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './QuizScoreCard.module.css';
 
 const QuizScoreCard = props => {
@@ -46,6 +46,15 @@ const QuizScoreCard = props => {
             </tr>
         );
     });
+
+    
+    useEffect(() => {
+        props.onEvaluationFinish({
+            numberOfCorrectAnswers,
+            totalQuestions: props.answerDetails.length
+        });
+    
+    }, [])
 
     return (
         <div className={classes.ScoreCardContainer}>
