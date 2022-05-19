@@ -8,16 +8,20 @@ const QuizScoreCard = props => {
     } = props;
 
     let scoreCardRows = answerDetails.map(answerDetail => {
+        let rowBackgroundColor = "lightgreen";
+        if (
+            answerDetail.submittedAnswer === "Unanswered" ||
+            answerDetail.actualAnswer !== answerDetail.submittedAnswer
+        ) {
+            rowBackgroundColor = "indianred";
+        }
+
         return (
             <tr 
                 className={classes.ScoreCardRow} 
                 key={answerDetail.index}
                 style={{
-                    backgroundColor: (
-                        answerDetail.actualAnswer === answerDetail.submittedAnswer ? 
-                        "lightgreen" : 
-                        "indianred"
-                    )
+                    backgroundColor: rowBackgroundColor
                 }}
             >
                 <td >{answerDetail.index + 1}</td>

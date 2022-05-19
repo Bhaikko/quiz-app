@@ -61,6 +61,10 @@ class Quiz extends Component {
         // console.log("Quiz Finished.");
     }
 
+    onTimeUpHandler = () => {
+        // Quiz Question should have a timer
+    }
+
     render() {
         return (
             <div className={classes.Quiz}>

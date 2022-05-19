@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import classes from './QuizQuestion.module.css'
 
+import Timer from '../Timer/Timer';
+
 class QuizQuestion extends Component {
     constructor(props) {
         super(props);
 
+        this.timeAllowedPerQuestion = 5;
+
         this.state = {
-            answerInput: ""
+            answerInput: "",
+            resetTimer: true
         }
     }
 
@@ -43,7 +48,28 @@ class QuizQuestion extends Component {
         
         // console.log(this.state.answerInput);
         this.setState({
-            answerInput: ""
+            answerInput: "",
+            resetTimer: true
+        });
+    }
+
+    onTimeUpHandler = () => {
+        const actualAnswer = this.calculateAnswer();
+
+        this.props.onAnswerSubmit({
+            actualAnswer,
+            submittedAnswer: "Unanswered"
+        });
+
+        this.setState({
+            answerInput: "",
+            resetTimer: true
+        });
+    }
+
+    timerUpdated = () => {
+        this.setState({
+            resetTimer: false
         });
     }
 
@@ -68,6 +94,13 @@ class QuizQuestion extends Component {
                 >
                     Submit Answer!
                 </button>
+
+                <Timer 
+                    timerValue={this.timeAllowedPerQuestion}
+                    resetTimer={this.state.resetTimer}
+                    onTimeUp={this.onTimeUpHandler}
+                    timerUpdated={this.timerUpdated}
+                />
             </div>  
         );
     }
