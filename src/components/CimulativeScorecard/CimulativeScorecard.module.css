@@ -1,6 +1,18 @@
 .CimulativeScorecard {
     position: absolute;
+    width: 50%;
+    top: 25px;
+    left: 25%;
+}
 
-    top: 10px;
-    left: 50%;
+.CimulativeScorecardHeader {
+    font-size: 32px;
+    font-weight: bold;
+    transition: 2s;
+}
+
+.FinalScore {
+    margin: 10px;
+    font-weight: bold;
+    font-size: 20px;
 }

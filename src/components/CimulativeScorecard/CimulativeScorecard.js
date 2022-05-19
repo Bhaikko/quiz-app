@@ -16,6 +16,7 @@ const CimulativeScorecard = props => {
         return (
             <tr key={key}>
                 <td>{index + 1}</td>
+                <td>{key}</td>
                 <td>{quizData[key].numberOfCorrectAnswers}</td>
                 <td>{quizData[key].totalQuestions}</td>
             </tr>
@@ -24,6 +25,7 @@ const CimulativeScorecard = props => {
 
     return (
         <div className={classes.CimulativeScorecard}>
+            <div className={classes.CimulativeScorecardHeader}>Cimulative Score</div>
             <table className={classes.CimulativeScorecardTable}>
                 <thead>
                     <tr>
@@ -39,7 +41,7 @@ const CimulativeScorecard = props => {
             </table>
 
             <div className={classes.FinalScore}>
-                Score: {finalUserTotal} / {finalTotal}                
+                Your Final Score: {finalUserTotal} / {finalTotal}                
             </div>
         </div>
     )

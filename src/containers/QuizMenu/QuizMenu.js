@@ -103,13 +103,8 @@ class QuizMenu extends Component {
                         maxOperand={this.state.maxOperand}
                         onQuizFinished={data => this.props.onQuizFinished(data)}
                         quizStarted={this.state.quizStarted}
+                        onReset={this.onQuizResetHander}
                     />
-
-                    <Button 
-                        onClick={this.onQuizResetHander}
-                    >
-                        Reset Quiz
-                    </Button>
                 </div>
             );
         }

@@ -5,6 +5,7 @@ import QuizQuestion from '../QuizQuestion/QuizQuestion';
 import QuizScoreCard from '../../components/QuizScoreCard/QuizScoreCard';
 
 import { randomInteger } from './../../utility/Random';
+import Button from '../../components/Button/Button';
 
 class Quiz extends Component {
     constructor(props) {
@@ -123,6 +124,12 @@ class Quiz extends Component {
                             question={this.questions[this.state.currentQuestionIndex]}
                             onAnswerSubmit={this.onAnswerSubmitHandler}
                         />
+
+                        <Button
+                            onClick={this.props.onReset}
+                        >
+                        Reset Quiz
+                    </Button>
                     </div>
                 )}
             </div>

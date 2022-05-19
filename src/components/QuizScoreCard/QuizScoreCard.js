@@ -73,7 +73,7 @@ const QuizScoreCard = props => {
             </table>
 
             <div className={classes.FinalScore}>
-                Score: {numberOfCorrectAnswers} / {props.answerDetails.length}                
+                Your Score: {numberOfCorrectAnswers} / {props.answerDetails.length}                
             </div>
         </div>
     );
